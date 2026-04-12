@@ -1,0 +1,613 @@
+/* ═══════════════════════════════════════════
+   ANIMATIONS & SCROLL REVEAL
+═══════════════════════════════════════════ */
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes dotPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(22,163,74,0.5); }
+  50%       { box-shadow: 0 0 0 6px rgba(22,163,74,0); }
+}
+@keyframes cardSlideIn {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fade-down {
+  animation: fadeDown 0.7s cubic-bezier(0.22,1,0.36,1) both;
+}
+.animate-fade-up {
+  animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) both;
+}
+.anim-delay-1 { animation-delay: 0.15s; }
+.anim-delay-2 { animation-delay: 0.3s; }
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1),
+              transform 0.65s cubic-bezier(0.22,1,0.36,1);
+  transition-delay: var(--reveal-delay, 0s);
+}
+.reveal.in-view  { opacity: 1; transform: none !important; }
+.reveal-up    { transform: translateY(40px); }
+.reveal-left  { transform: translateX(-40px); }
+.reveal-right { transform: translateX(40px); }
+
+
+/* ── Page Hero (shared base) ── */
+.page-hero {
+  position: relative;
+  padding: 100px 0 88px;
+  overflow: hidden;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+}
+
+.page-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.page-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(150deg, rgba(10,31,68,0.92) 0%, rgba(16,66,160,0.85) 100%);
+  z-index: 1;
+}
+
+.page-hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+}
+
+.page-hero-inner .section-label {
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.9);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.page-hero-inner h1 {
+  color: var(--white);
+  margin: 16px 0 20px;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+}
+
+.page-hero-inner p {
+  color: rgba(255,255,255,0.75);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+
+/* Hero quick-contact pills */
+.hero-contact-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: var(--white);
+  border-radius: 99px;
+  padding: 9px 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: var(--font-display);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.hero-pill:hover {
+  background: rgba(255,255,255,0.22);
+  border-color: rgba(255,255,255,0.5);
+  transform: translateY(-2px);
+}
+
+.hero-pill-green {
+  background: rgba(22,163,74,0.2);
+  border-color: rgba(134,239,172,0.4);
+}
+
+.hero-pill-green:hover {
+  background: rgba(22,163,74,0.35);
+  border-color: rgba(134,239,172,0.7);
+}
+
+
+/* ── Contact Section ── */
+.contact-section { background: var(--gray-50); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.45fr;
+  gap: 56px;
+  align-items: start;
+}
+
+/* ── Info Column ── */
+.contact-info-col h2 { margin-bottom: 8px; }
+
+.info-intro {
+  font-size: 0.92rem;
+  color: var(--gray-600);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.info-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  animation: cardSlideIn 0.5s calc(var(--card-delay, 0s) + 0.3s) both;
+}
+
+.info-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateX(5px);
+}
+
+.info-card.ic-blue:hover  { border-color: var(--blue-200); background: var(--blue-50); }
+.info-card.ic-green:hover { border-color: #bbf7d0; background: #f0fdf4; }
+
+.ic-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  transition: all 0.25s;
+}
+
+.ic-blue  .ic-icon { background: var(--blue-50);  color: var(--blue-600); }
+.ic-green .ic-icon { background: #f0fdf4; color: #16a34a; }
+
+.info-card:hover .ic-icon { transform: scale(1.1) rotate(-5deg); }
+.ic-blue:hover  .ic-icon  { background: var(--blue-600); color: var(--white); }
+.ic-green:hover .ic-icon  { background: #16a34a; color: var(--white); }
+
+.ic-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--gray-400);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-family: var(--font-display);
+  margin-bottom: 2px;
+}
+
+.ic-value {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--gray-800);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.ic-arrow {
+  margin-left: auto;
+  font-size: 1rem;
+  color: var(--gray-300);
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.info-card:hover .ic-arrow { color: var(--blue-500); transform: translateX(3px); }
+
+/* Hours badge */
+.hours-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--white);
+  border: 1px solid #bbf7d0;
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  margin-bottom: 16px;
+}
+
+.hours-dot {
+  width: 10px; height: 10px;
+  background: #16a34a;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: dotPulse 2s infinite;
+}
+
+.hours-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #15803d;
+  letter-spacing: 0.02em;
+  margin-bottom: 2px;
+}
+
+.hours-sub {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--gray-600);
+}
+
+/* IndiaMART button */
+.indiamart-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(135deg, #1a56cc 0%, #0d2d6b 100%);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  color: var(--white);
+  text-decoration: none;
+  transition: all 0.25s;
+  margin-top: 4px;
+}
+
+.indiamart-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(37,99,235,0.4);
+}
+
+.im-logo {
+  width: 44px; height: 44px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1rem;
+  flex-shrink: 0;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: background 0.25s;
+}
+
+.indiamart-btn:hover .im-logo { background: rgba(255,255,255,0.25); }
+
+.im-title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.im-sub {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.75;
+  margin-top: 2px;
+}
+
+.im-arrow { margin-left: auto; opacity: 0.7; font-size: 0.85rem; transition: transform 0.2s; }
+.indiamart-btn:hover .im-arrow { opacity: 1; transform: translateX(3px); }
+
+
+/* ── Form Column ── */
+.contact-form-col {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: var(--shadow-md);
+}
+
+.form-header { margin-bottom: 6px; }
+.form-header h2 { margin-bottom: 4px; }
+.form-header p  { font-size: 0.88rem; color: var(--gray-500); }
+
+.contact-form .divider { margin-bottom: 28px; }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gray-700);
+  letter-spacing: 0.02em;
+}
+
+.req { color: var(--blue-600); }
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  padding: 11px 14px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--gray-800);
+  background: var(--gray-50);
+  transition: all 0.2s;
+  outline: none;
+  resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--gray-400); }
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--blue-400);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+.form-group.error input,
+.form-group.error textarea {
+  border-color: #ef4444;
+  background: #fff5f5;
+}
+
+.err-msg {
+  font-size: 0.78rem;
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.submit-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 14px;
+  font-size: 0.95rem;
+  margin-top: 4px;
+  gap: 8px;
+  transition: all 0.25s, transform 0.2s;
+}
+
+.submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,99,235,0.3); }
+.submit-btn:active { transform: translateY(0); }
+
+
+/* ── Success State ── */
+.success-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 48px 24px;
+  gap: 16px;
+  animation: fadeUp 0.5s ease both;
+}
+
+.success-icon {
+  font-size: 3.5rem;
+  color: #16a34a;
+  background: #f0fdf4;
+  padding: 20px;
+  border-radius: 50%;
+  border: 2px solid #bbf7d0;
+  line-height: 1;
+}
+
+.success-state h2 { color: var(--gray-900); }
+.success-state p  { max-width: 340px; font-size: 0.95rem; color: var(--gray-600); }
+
+
+/* ── Map ── */
+.map-container {
+  margin-top: 56px;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.map-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--gray-100);
+  background: var(--white);
+}
+
+.map-header svg {
+  font-size: 1.4rem;
+  color: var(--blue-600);
+  flex-shrink: 0;
+}
+
+.map-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--gray-800);
+  margin-bottom: 2px;
+}
+
+.map-sub {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--gray-500);
+}
+
+.map-frame { display: block; line-height: 0; }
+
+
+/* ── Responsive ── */
+@media (max-width: 1200px) {
+  .contact-form-col { padding: 32px; }
+  .contact-grid { gap: 48px; }
+}
+
+@media (max-width: 1024px) {
+  .page-hero { min-height: 360px; padding: 70px 0 60px; }
+  .page-hero-inner h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+  .page-hero-inner p { font-size: 1rem; margin-bottom: 20px; }
+  
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .contact-form-col { padding: 28px; }
+  .form-row { gap: 14px; }
+  .form-group { margin-bottom: 16px; }
+}
+
+@media (max-width: 768px) {
+  .page-hero { min-height: 320px; padding: 60px 0 50px; }
+  .page-hero-inner h1 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); }
+  .page-hero-inner p { font-size: 0.95rem; margin-bottom: 18px; }
+  .hero-contact-pills { gap: 6px; }
+  .hero-pill { font-size: 0.75rem; padding: 7px 12px; }
+  
+  .contact-section { padding: 50px 0; }
+  .contact-info-col h2 { font-size: clamp(1.4rem, 3vw, 1.8rem); margin-bottom: 12px; }
+  .info-intro { font-size: 0.88rem; margin-bottom: 20px; }
+  .info-cards { gap: 8px; margin-bottom: 14px; }
+  .info-card { padding: 12px 14px; gap: 10px; }
+  .ic-icon { width: 40px; height: 40px; font-size: 1.1rem; }
+  .ic-label { font-size: 0.68rem; }
+  .ic-value { font-size: 0.82rem; }
+  .hours-badge { padding: 12px 14px; gap: 10px; margin-bottom: 12px; }
+  .indiamart-btn { padding: 14px 16px; gap: 10px; margin-top: 0; }
+  
+  .contact-form-col { padding: 24px; }
+  .form-header { margin-bottom: 4px; }
+  .form-header h2 { font-size: clamp(1.4rem, 3vw, 1.8rem); margin-bottom: 4px; }
+  .form-header p { font-size: 0.82rem; }
+  .contact-form .divider { margin-bottom: 18px; width: 36px; }
+  .form-row { grid-template-columns: 1fr; gap: 12px; }
+  .form-group { gap: 5px; margin-bottom: 14px; }
+  .form-group label { font-size: 0.78rem; }
+  .form-group input, .form-group textarea, .form-group select { padding: 10px 12px; font-size: 0.85rem; }
+  .submit-btn { padding: 12px; font-size: 0.9rem; }
+  
+  .map-container { margin-top: 40px; }
+  .map-header { padding: 14px 18px; gap: 10px; }
+  .map-header svg { font-size: 1.2rem; }
+  .map-title { font-size: 0.85rem; }
+  .map-sub { font-size: 0.75rem; }
+}
+
+@media (max-width: 640px) {
+  .page-hero { min-height: 280px; padding: 50px 0 40px; }
+  .page-hero-inner h1 { font-size: clamp(1.3rem, 3vw, 1.8rem); }
+  .page-hero-inner p { font-size: 0.9rem; margin-bottom: 16px; }
+  .hero-contact-pills { gap: 5px; }
+  .hero-pill { font-size: 0.7rem; padding: 6px 10px; }
+  
+  .contact-section { padding: 40px 0; }
+  .contact-info-col h2 { font-size: clamp(1.2rem, 2.8vw, 1.5rem); }
+  .info-cards { gap: 6px; }
+  .info-card { padding: 10px 12px; font-size: 0.8rem; }
+  .ic-icon { width: 36px; height: 36px; font-size: 1rem; }
+  .ic-label { font-size: 0.65rem; }
+  .ic-value { font-size: 0.78rem; }
+  .hours-badge { padding: 10px 12px; gap: 8px; }
+  .indiamart-btn { padding: 12px 14px; }
+  .im-logo { width: 38px; height: 38px; font-size: 0.85rem; }
+  .im-title { font-size: 0.85rem; }
+  .im-sub { font-size: 0.75rem; }
+  
+  .contact-form-col { padding: 20px; }
+  .form-header h2 { font-size: clamp(1.2rem, 2.8vw, 1.5rem); }
+  .form-header p { font-size: 0.75rem; }
+  .form-group label { font-size: 0.75rem; }
+  .form-group input, .form-group textarea, .form-group select { padding: 9px 10px; font-size: 0.82rem; }
+  .submit-btn { padding: 10px; font-size: 0.85rem; }
+  
+  .success-state { padding: 32px 14px; }
+  .success-icon { font-size: 2.8rem; padding: 14px; }
+  .success-state h2 { font-size: 1.4rem; }
+  .success-state p { font-size: 0.85rem; }
+  
+  .map-container { margin-top: 32px; }
+  .map-header { padding: 12px 14px; gap: 8px; }
+  .map-title { font-size: 0.8rem; }
+}
+
+@media (max-width: 480px) {
+  .page-hero { min-height: 240px; padding: 40px 0 32px; }
+  .page-hero-inner h1 { font-size: clamp(1.1rem, 2.8vw, 1.5rem); }
+  .page-hero-inner p { font-size: 0.85rem; margin-bottom: 14px; }
+  .hero-contact-pills { gap: 4px; }
+  .hero-pill { font-size: 0.65rem; padding: 5px 8px; }
+  
+  .contact-section { padding: 32px 0; }
+  .contact-info-col h2 { font-size: clamp(1rem, 2.5vw, 1.3rem); margin-bottom: 10px; margin-bottom: 10px; }
+  .info-intro { font-size: 0.82rem; margin-bottom: 14px; }
+  .info-cards { gap: 5px; margin-bottom: 10px; }
+  .info-card { padding: 8px 10px; gap: 8px; }
+  .ic-icon { width: 32px; height: 32px; font-size: 0.9rem; }
+  .ic-label { font-size: 0.62rem; }
+  .ic-value { font-size: 0.75rem; }
+  .ic-arrow { display: none; }
+  .hours-badge { padding: 8px 10px; gap: 6px; }
+  .hours-title { font-size: 0.75rem; }
+  .hours-sub { font-size: 0.7rem; }
+  .indiamart-btn { padding: 10px 12px; font-size: 0.8rem; gap: 8px; }
+  .im-logo { width: 34px; height: 34px; font-size: 0.8rem; }
+  .im-title { font-size: 0.8rem; }
+  .im-sub { font-size: 0.7rem; }
+  
+  .contact-form-col { padding: 16px; border-radius: var(--radius-md); }
+  .form-header h2 { font-size: clamp(1.1rem, 2.5vw, 1.3rem); margin-bottom: 2px; }
+  .form-header p { font-size: 0.7rem; }
+  .contact-form .divider { width: 28px; margin-bottom: 14px; }
+  .form-row { gap: 10px; }
+  .form-group { gap: 4px; margin-bottom: 12px; }
+  .form-group label { font-size: 0.7rem; }
+  .form-group input, .form-group textarea, .form-group select { padding: 8px 8px; font-size: 0.78rem; border-radius: 4px; }
+  .err-msg { font-size: 0.7rem; }
+  .submit-btn { padding: 10px 8px; font-size: 0.8rem; }
+  
+  .success-state { padding: 24px 10px; }
+  .success-icon { font-size: 2.4rem; padding: 12px; }
+  .success-state h2 { font-size: 1.15rem; }
+  .success-state p { font-size: 0.75rem; }
+  
+  .map-container { margin-top: 24px; border-radius: var(--radius-md); }
+  .map-header { padding: 10px 12px; gap: 6px; }
+  .map-header svg { font-size: 1rem; }
+  .map-title { font-size: 0.75rem; }
+  .map-sub { font-size: 0.65rem; }
+}
