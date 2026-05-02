@@ -709,7 +709,7 @@
 .brand-logo-card:hover .brand-logo-inner::before { transform: scaleX(1); }
 .brand-logo-inner img { max-width: 100%; max-height: 64px; width: auto; height: auto; object-fit: contain; filter: grayscale(15%) opacity(0.9); transition: filter 0.35s ease, transform 0.35s ease; }
 .brand-logo-card:hover .brand-logo-inner img { filter: grayscale(0%) opacity(1); transform: scale(1.06); }
-.brand-name { font-size: 0.72rem; font-weight: 600; color: var(--gray-400,#48609d); letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.25s ease; }
+.brand-name { font-size: 0.72rem; font-weight: 600; color: var(#48609d); letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.25s ease; }
 .brand-logo-card:hover .brand-name { color: var(--blue-600,#2563eb); }
 
 
