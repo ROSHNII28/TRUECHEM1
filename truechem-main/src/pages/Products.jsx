@@ -13,9 +13,23 @@ const constructionProducts = [
     img: '/product_images/rdp.jpg',
     indiamart: 'https://www.indiamart.com/true-chem/redispersible-polymer-powder.html#11903628891',
     docs: [
-      { company: 'JINJI', type: 'TDS', file: '/RD POWDER TDS (2).pdf' },
-      { company: 'JINJI', type: 'SDS', file: '/MSDS RDP (JINJI).pdf' },
-      { company: 'HEBEI', type: 'TDS', file: '/RDP HEBEI TDS (1).pdf' },
+      { company: 'HLC RDP', type: 'TDS', file: '/RD POWDER TDS (2).pdf' },
+      { company: 'JINJI RDP', type: 'TDS', file: '/MSDS RDP (JINJI).pdf' },
+      { company: 'YiChengJiaHua RDP', type: 'TDS', file: '/RDP HEBEI TDS (1).pdf' },
+    ],
+  },
+  {
+    name: 'MHEC / HPMC',
+    abbr: 'CE',
+    desc: 'A non-ionic cellulose ether widely used in dry mortar as a rheology modifier and water retention agent. Improves workability, consistency, adhesion, open time and stability. Acts as a thickener and binder.',
+    img: '/product_images/mhec_hpmc.jpg',
+    indiamart: 'https://www.indiamart.com/true-chem/methyl-hydroxyethyl-cellulose.html#2856799874530',
+    docs: [
+      { company: 'JINJI',  type: 'TDS', file: '/MHEC JINJI TDS.pdf' },
+      { company: 'JINJI',  type: 'TDS', file: '/MSDS of MHEC (JINJI).pdf' },
+      { company: 'Green MHEC ',   type: 'TDS', file: '/OSHA SDS MHEC-Green.docx.pdf' },
+      { company: 'HPMC',   type: 'TDS', file: '/HPMC TDS (2).pdf' },
+      { company: 'Green MHEC', type: 'TDS', file: '/TDS of ME-K300000 (1).pdf' },
     ],
   },
   {
@@ -66,20 +80,7 @@ const constructionProducts = [
     indiamart: 'https://www.indiamart.com/true-chem/search.html?ss=ligno',
     docs: [],
   },
-  {
-    name: 'MHEC / HPMC',
-    abbr: 'CE',
-    desc: 'A non-ionic cellulose ether widely used in dry mortar as a rheology modifier and water retention agent. Improves workability, consistency, adhesion, open time and stability. Acts as a thickener and binder.',
-    img: '/product_images/mhec_hpmc.jpg',
-    indiamart: 'https://www.indiamart.com/true-chem/methyl-hydroxyethyl-cellulose.html#2856799874530',
-    docs: [
-      { company: 'JINJI',  type: 'TDS', file: '/MHEC JINJI TDS.pdf' },
-      { company: 'JINJI',  type: 'SDS', file: '/MSDS of MHEC (JINJI).pdf' },
-      { company: 'OSHA',   type: 'SDS', file: '/OSHA SDS MHEC-Green.docx.pdf' },
-      { company: 'HPMC',   type: 'TDS', file: '/HPMC TDS (2).pdf' },
-      { company: 'ME-K300000', type: 'TDS', file: '/TDS of ME-K300000 (1).pdf' },
-    ],
-  },
+  
   {
     name: 'Defoamers',
     abbr: 'DF',
@@ -95,7 +96,7 @@ const constructionProducts = [
     img: '/product_images/calcium_formate.jpg',
     indiamart: 'https://www.indiamart.com/true-chem/calcium-formate.html#2856852155773',
     docs: [
-      { company: 'MSDS', type: 'SDS', file: '/MSDS-Calcium Formate.pdf' },
+      { company: 'Calcium formate', type: 'SDS', file: '/MSDS-Calcium Formate.pdf' },
     ],
   },
   {

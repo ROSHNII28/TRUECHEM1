@@ -92,7 +92,7 @@ export default function Contact() {
   }
 
   try {
-    const res = await fetch("http://localhost:4000/api/contact", {
+    const res = await fetch("http://192.168.29.192:4000/api/contact", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

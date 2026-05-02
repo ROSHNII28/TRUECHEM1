@@ -6,7 +6,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const app = express();
-app.use(cors({ origin: process.env.CLIENT_ORIGIN || 'http://localhost:5173' }));
+app.use(cors()); // allow all (testing)
 app.use(express.json());
 
 // Create transporter (Gmail example — works with any SMTP)
