@@ -36,18 +36,13 @@
 
 
 .im-logo-img {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
-  border-radius: 50%;
   display: block;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  mix-blend-mode: multiply;
 }
 
-.im-icon:hover .im-logo-img {
-  transform: scale(1.15);
-  opacity: 0.85;
-}
 .brand-logo{
   height: 45px;
   width: auto;

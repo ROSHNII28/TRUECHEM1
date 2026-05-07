@@ -34,7 +34,7 @@ export default function Footer() {
                 <FaWhatsapp />
               </a>
 
-              <a href="mailto:Sales@truechem.co.in" className="social-link">
+              <a href="mailto:sales@truechem.co.in" className="social-link">
                 <MdEmail />
               </a>
 

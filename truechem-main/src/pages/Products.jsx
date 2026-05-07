@@ -15,7 +15,6 @@ const constructionProducts = [
     docs: [
       { company: 'HLC RDP', type: 'TDS', file: '/RD POWDER TDS (2).pdf' },
       { company: 'JINJI RDP', type: 'TDS', file: '/MSDS RDP (JINJI).pdf' },
-      { company: 'JINJI CHEMICAL RDP', type: 'TDS', file: '/truechem-main/public/RDP TDS.pdf' },
       { company: 'YiChengJiaHua RDP', type: 'TDS', file: '/RDP HEBEI TDS (1).pdf' },
     ],
   },
@@ -26,13 +25,9 @@ const constructionProducts = [
     img: '/product_images/mhec_hpmc.jpg',
     indiamart: 'https://www.indiamart.com/true-chem/methyl-hydroxyethyl-cellulose.html#2856799874530',
     docs: [
-      { company: 'JINJI',  type: 'TDS', file: '/MHEC JINJI TDS.pdf' },
-      { company: 'JINJI CHEMICAL',  type: 'TDS', file: '/truechem-main/public/HPMC TDS.pdf' },
-       { company: 'JINJI CHEMICAL',  type: 'TDS', file: '/truechem-main/public/MHEC TDS.pdf' },
-      { company: 'JINJI',  type: 'TDS', file: '/MSDS of MHEC (JINJI).pdf' },
-      { company: 'Green MHEC ',   type: 'TDS', file: '/OSHA SDS MHEC-Green.docx.pdf' },
-      { company: 'HPMC',   type: 'TDS', file: '/HPMC TDS (2).pdf' },
-      { company: 'Green MHEC', type: 'TDS', file: '/TDS of ME-K300000 (1).pdf' },
+      { company: 'HLC -MHEC - (200,000) ',   type: 'TDS', file: '/truechem-main/public/TDS of MHEC.pdf' },
+      { company: 'JINJI -HPMC -(200,000)',   type: 'TDS', file: '/HPMC TDS (2).pdf' },
+      { company: 'TAIAN Green MHEC -(300,000)', type: 'TDS', file: '/TDS of ME-K300000 (1).pdf' },
     ],
   },
   {
