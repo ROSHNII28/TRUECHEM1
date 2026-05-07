@@ -825,5 +825,5 @@
   .brands-logos-wrap { gap: 12px; margin-top: 28px; }
   .brand-logo-inner { width: 112px; height: 74px; padding: 10px 12px; }
   .brand-logo-inner img { max-height: 46px; }
-  .brand-name { font-size: 0.65rem; }
+  .brand-name { font-size: 0.8rem; }
 }
