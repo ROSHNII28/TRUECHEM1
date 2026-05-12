@@ -92,7 +92,7 @@ export default function Contact() {
   }
 
   try {
-    const res = await fetch("http://192.168.29.192:4000/api/contact", {
+    const res = await fetch("https://truechem1.onrender.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
