@@ -68,6 +68,7 @@ export default function Contact() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const validate = () => {
     const e = {};
@@ -86,27 +87,35 @@ export default function Contact() {
   e.preventDefault();
 
   const errs = validate();
+
   if (Object.keys(errs).length > 0) {
     setErrors(errs);
     return;
   }
 
+  setLoading(true);
+
   try {
     const res = await fetch("https://truechem1.onrender.com/api/contact", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify(form),
-});
-   
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    });
 
     const data = await res.json();
 
     if (data.success) {
       setSubmitted(true);
+
       setForm({
-        name: '', company: '', email: '', phone: '', subject: '', message: ''
+        name: "",
+        company: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
       });
     } else {
       alert("Failed to send message");
@@ -116,6 +125,8 @@ export default function Contact() {
     console.error(err);
     alert("Error sending message");
   }
+
+  setLoading(false);
 };
 
   
@@ -277,9 +288,14 @@ export default function Contact() {
                     {errors.message && <span className="err-msg">{errors.message}</span>}
                   </div>
 
-                  <button type="submit" className="btn btn-primary submit-btn">
-                    <MdSend /> Send Message
-                  </button>
+                  <button
+  type="submit"
+  className="btn btn-primary submit-btn"
+  disabled={loading}
+>
+  <MdSend />
+  {loading ? " Sending..." : " Send Message"}
+</button>
                 </form>
               )}
             </div>
