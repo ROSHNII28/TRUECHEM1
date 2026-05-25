@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: process.env.CLIENT_ORIGIN,
+    origin: process.env.CLIENT_ORIGIN, // Ensure no trailing slash in your dashboard config
     methods: ["GET", "POST"],
     credentials: true,
   })
@@ -21,19 +21,15 @@ app.get("/", (req, res) => {
   res.send("Truechem backend running successfully");
 });
 
-// Nodemailer Transporter
+// Nodemailer Transporter (Updated for stable production hosting)
 const transporter = nodemailer.createTransport({
-  host: 'smtp.google.com', // or your specific provider's SMTP host
-  port: 587,
-  secure: false, // true for port 465, false for other ports
+  host: 'smtp.gmail.com',
+  port: 465,         // Changed to 465 to bypass cloud hosting port blocks
+  secure: true,      // Set to true because we are using port 465
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    pass: process.env.EMAIL_PASS, // Must be your 16-character Gmail App Password
   },
-  tls: {
-    // Do not fail on invalid certs (helps with cloud routing)
-    rejectUnauthorized: false 
-  }
 });
 
 // Contact Form Route
@@ -50,7 +46,7 @@ app.post("/api/contact", async (req, res) => {
 
   try {
     await transporter.sendMail({
-      from: `"${name}" <${process.env.SMTP_USER}>`,
+      from: `"${name}" <${process.env.EMAIL_USER}>`,
       to: process.env.RECEIVER_EMAIL,
       replyTo: email,
       subject: subject
