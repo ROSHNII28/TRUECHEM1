@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b04a25cb.css",
+    "main.js": "/static/js/main.73ff045a.js",
+    "static/media/Truechem logo.png": "/static/media/Truechem logo.b47b18bc0bcac6d00363.png",
+    "static/media/indiamart-logo.png": "/static/media/indiamart-logo.5d713e34a16a65fd8e35.png",
+    "static/media/YichengJiaHua.png": "/static/media/YichengJiaHua.172b2ea1ee8b98e15d9c.png",
+    "static/media/Jinji.png": "/static/media/Jinji.7d11ee85d8e4a9f9dfbf.png",
+    "static/media/white logo.png": "/static/media/white logo.7ab24291c4c7aadf882f.png",
+    "static/media/hlc.png": "/static/media/hlc.b4ab70e2ce1e4a854474.png",
+    "static/media/green.png": "/static/media/green.b1fda3d6b2e32c6df942.png",
+    "index.html": "/index.html",
+    "main.b04a25cb.css.map": "/static/css/main.b04a25cb.css.map",
+    "main.73ff045a.js.map": "/static/js/main.73ff045a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b04a25cb.css",
+    "static/js/main.73ff045a.js"
+  ]
+}

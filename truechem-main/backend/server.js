@@ -23,11 +23,17 @@ app.get("/", (req, res) => {
 
 // Nodemailer Transporter
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: 'smtp.gmail.com', // or your specific provider's SMTP host
+  port: 587,
+  secure: false, // true for port 465, false for other ports
   auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
+  tls: {
+    // Do not fail on invalid certs (helps with cloud routing)
+    rejectUnauthorized: false 
+  }
 });
 
 // Contact Form Route
